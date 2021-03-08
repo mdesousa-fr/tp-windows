@@ -93,6 +93,7 @@ for ( $a=0 ; $a -lt $csv_files.Count ; $a++ ) {
                 try {
                     ### ARCHIVAGE ###
                     Move-ADObject -Identity ($ad_import[$i].distinguishedName) -TargetPath $OU_archives
+                    Set-ADUser -Identity ($ad_import[$i].distinguishedName) -Enabled $false
                     Write-Verbose "[ARCHIVE] '$($ad_import[$i].SamAccountName)' archived"
                 }
                 catch {
